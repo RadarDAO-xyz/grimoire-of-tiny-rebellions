@@ -1,0 +1,940 @@
+@font-face {
+  font-family: 'Fraunces';
+  src: url('../assets/Fonts/Fraunces/Fraunces-VariableFont_SOFT,WONK,opsz,wght.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Fraunces';
+  src: url('../assets/Fonts/Fraunces/Fraunces-Italic-VariableFont_SOFT,WONK,opsz,wght.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Alegreya';
+  src: url('../assets/Fonts/Alegreya/Alegreya-VariableFont_wght.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Alegreya';
+  src: url('../assets/Fonts/Alegreya/Alegreya-Italic-VariableFont_wght.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Cedarville Cursive';
+  src: url('../assets/Fonts/Cedarville_Cursive/CedarvilleCursive-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --sky-deep: #5a8ab5;
+  --sky-mid: #7aaac8;
+  --sky-light: #9cbcd6;
+  --sky-haze: #b6cfe2;
+  --ink: #1e1a14;
+  --ink-mid: #4a4030;
+  --ink-faint: #8a7c6c;
+  --ink-ghost: #b8afa0;
+  --warm-white: #faf6f0;
+  --score-bg: rgba(248, 244, 236, 0.94);
+  --transition-slow: 800ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-medium: 400ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family: 'Alegreya', Georgia, serif;
+  color: var(--ink);
+  background: var(--sky-mid);
+}
+
+/* ── sky field ── */
+
+.field {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  background: url('../assets/background/clouds2.png') center / cover no-repeat;
+  cursor: default;
+}
+
+/* grain */
+.field::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.78' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.055'/%3E%3C/svg%3E");
+  pointer-events: none;
+  opacity: 0.62;
+  mix-blend-mode: overlay;
+}
+
+/* vignette */
+.field-vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 90% 88% at 50% 50%, transparent 30%, rgba(18,38,62,0.32) 100%);
+  pointer-events: none;
+}
+
+/* ── charm objects ── */
+
+.charm {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  user-select: none;
+  will-change: transform, opacity;
+  transition: opacity var(--transition-slow), transform var(--transition-slow);
+}
+
+/* expanded hit area — pseudo-element extends clickable bounds without affecting layout */
+.charm::before {
+  content: '';
+  position: absolute;
+  inset: -20px;
+}
+
+.charm img {
+  display: block;
+  width: 130px;
+  height: auto;
+  pointer-events: none;
+  user-select: none;
+}
+
+.charm:hover img { filter: brightness(1.06) drop-shadow(0 2px 8px rgba(20,40,80,0.22)); }
+
+.charm { opacity: 0; }
+.charm.landed { opacity: 1; }
+
+.field.settled .charm {
+  animation: none !important;
+  opacity: 1;
+}
+
+.field.settled .charm.receded {
+  opacity: 0.07 !important;
+  transform: translate(-50%, -50%) scale(0.9) !important;
+  pointer-events: none;
+}
+
+.field.settled .charm.selected {
+  opacity: 1 !important;
+  transform: translate(-50%, -50%) scale(1) !important;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.field.settled .charm.selected img {
+  filter: brightness(1.06) drop-shadow(0 0 16px rgba(255,255,255,0.28));
+}
+
+/* ── entrance animations: driven by JS physics in field.js ── */
+
+/* ── notice text ── */
+
+.notice-text {
+  position: absolute;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Cedarville Cursive', cursive;
+  font-size: 14px;
+  color: rgba(255,255,255,0.68);
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  pointer-events: none;
+  transition: opacity var(--transition-slow);
+  text-shadow: 0 1px 3px rgba(18,38,62,0.25);
+}
+
+.notice-text.hidden { opacity: 0; }
+
+/* ── score panel ── */
+
+.score-panel {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.score-panel.hidden { display: none; }
+
+.scores-cluster {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.score-card {
+  position: absolute;
+  width: clamp(220px, 26vw, 300px);
+  background: url('../assets/cards_rect_fb.png') center / 100% 100% no-repeat;
+  padding: 18px 22px 16px;
+  cursor: grab;
+  pointer-events: all;
+  opacity: 0;
+  animation: score-fade-in 700ms ease both;
+  box-shadow: 3px 6px 28px rgba(28,18,8,0.18), 1px 2px 8px rgba(28,18,8,0.10);
+  transform: rotate(var(--rot, 0deg));
+  transition: filter 200ms, box-shadow 300ms, transform 200ms, opacity var(--transition-slow);
+  touch-action: none;
+  user-select: none;
+}
+
+.score-card:nth-child(1) { animation-delay: 0.04s; }
+.score-card:nth-child(2) { animation-delay: 0.1s; }
+.score-card:nth-child(3) { animation-delay: 0.16s; }
+.score-card:nth-child(4) { animation-delay: 0.22s; }
+
+@keyframes score-fade-in {
+  from { opacity: 0; transform: rotate(var(--rot, 0deg)) translateY(10px); }
+  to   { opacity: 1; transform: rotate(var(--rot, 0deg)); }
+}
+
+.score-card:hover {
+  filter: brightness(0.96);
+  box-shadow: 4px 8px 36px rgba(28,18,8,0.22), 1px 2px 10px rgba(28,18,8,0.12);
+  transform: rotate(var(--rot, 0deg)) scale(1.02);
+  z-index: 2;
+}
+
+.score-card.fading {
+  animation: none !important;
+  opacity: 0 !important;
+  pointer-events: none;
+  transition: opacity 400ms ease;
+}
+
+.score-title {
+  font-family: 'Fraunces', serif;
+  font-size: 17px;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--ink);
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+
+.score-body-text {
+  font-family: 'Alegreya', serif;
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--ink-mid);
+}
+
+.score-body-text p { margin-bottom: 1px; }
+
+.score-closing {
+  margin-top: 8px;
+  font-style: italic;
+  color: var(--ink-faint);
+  font-size: 14px;
+}
+
+.score-take-hint {
+  font-family: 'Cedarville Cursive', cursive;
+  font-size: 12px;
+  color: var(--ink-ghost);
+  margin-top: 10px;
+  display: block;
+}
+
+/* drag hint */
+
+.drag-hint {
+  position: fixed;
+  top: 26px;
+  right: 28px;
+  font-family: 'Cedarville Cursive', cursive;
+  font-size: 13px;
+  color: rgba(255,255,255,0.75);
+  pointer-events: none;
+  white-space: nowrap;
+  text-shadow: 0 1px 3px rgba(18,38,62,0.28);
+  z-index: 35;
+  opacity: 0;
+  transition: opacity 700ms ease;
+}
+.drag-hint.visible { opacity: 1; }
+.drag-hint.hidden { display: none; }
+
+/* through-line */
+.through-line {
+  position: fixed;
+  top: 7vh;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: 13px;
+  color: rgba(255,255,255,0.82);
+  text-align: center;
+  max-width: 340px;
+  width: 80vw;
+  opacity: 0;
+  transition: opacity 1s ease;
+  pointer-events: none;
+  z-index: 10;
+  line-height: 1.6;
+  text-shadow: 0 1px 5px rgba(18,38,62,0.3);
+}
+.through-line.visible { opacity: 1; }
+
+/* ── note prompt ── */
+
+.note-prompt {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 12px 24px 28px;
+  background: linear-gradient(to top, rgba(18,38,62,0.90) 0%, rgba(18,38,62,0.75) 70%, transparent 100%);
+  z-index: 20;
+  opacity: 0;
+  animation: fade-in 700ms ease both;
+  touch-action: none;
+}
+
+.note-prompt.hidden { display: none; }
+
+.note-drag-handle {
+  width: 36px;
+  height: 4px;
+  border-radius: 2px;
+  background: rgba(255,255,255,0.28);
+  margin: 0 auto 14px;
+  cursor: grab;
+  flex-shrink: 0;
+}
+.note-drag-handle:active { cursor: grabbing; }
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.note-took {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: 15px;
+  color: rgba(255,255,255,0.88);
+  text-align: center;
+  max-width: 420px;
+  margin-bottom: 3px;
+  line-height: 1.5;
+  text-shadow: 0 1px 5px rgba(18,38,62,0.28);
+}
+
+.note-prompt-text {
+  font-family: 'Cedarville Cursive', cursive;
+  font-size: 13px;
+  color: rgba(255,255,255,0.58);
+  text-align: center;
+  margin-bottom: 14px;
+  text-shadow: 0 1px 3px rgba(18,38,62,0.22);
+}
+
+.note-card {
+  background: url('../assets/cards_rect_fb.png') center / 100% 100% no-repeat;
+  border: 1px solid rgba(155,135,108,0.3);
+  box-shadow: 2px 4px 24px rgba(28,18,8,0.1);
+  padding: 0;
+  width: 100%;
+  max-width: 480px;
+  position: relative;
+  transform: rotate(-0.3deg);
+}
+
+.note-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    transparent,
+    transparent 27px,
+    rgba(155,135,108,0.18) 27px,
+    rgba(155,135,108,0.18) 28px
+  );
+  background-position: 0 36px;
+  pointer-events: none;
+}
+
+textarea#note-input {
+  display: block;
+  width: 100%;
+  min-height: 88px;
+  background: transparent;
+  border: none;
+  outline: none;
+  resize: none;
+  font-family: 'Cedarville Cursive', cursive;
+  font-size: 17px;
+  line-height: 28px;
+  color: var(--ink);
+  padding: 36px 22px 16px;
+  position: relative;
+  z-index: 1;
+}
+
+textarea#note-input::placeholder { color: var(--ink-ghost); }
+
+.note-actions {
+  display: flex;
+  justify-content: flex-end;
+  padding: 12px 22px 16px;
+  border-top: 1px solid rgba(155,135,108,0.2);
+}
+
+.note-submit {
+  font-family: 'Fraunces', serif;
+  font-size: 15px;
+  color: var(--ink-mid);
+  background: none;
+  border: 1px solid rgba(105,88,68,0.4);
+  padding: 7px 18px;
+  cursor: pointer;
+  letter-spacing: 0.01em;
+  transition: background 200ms, color 200ms;
+}
+
+.note-submit:hover {
+  background: var(--ink);
+  color: var(--warm-white);
+  border-color: var(--ink);
+}
+
+/* ── navigation ── */
+
+.site-nav {
+  position: fixed;
+  bottom: 22px;
+  right: 28px;
+  display: flex;
+  gap: 20px;
+  z-index: 30;
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+.site-nav.visible { opacity: 1; }
+.site-nav.hidden { display: none; }
+
+.site-nav a {
+  font-family: 'Cedarville Cursive', cursive;
+  font-size: 13px;
+  color: rgba(255,255,255,0.62);
+  text-decoration: none;
+  letter-spacing: 0.01em;
+  transition: color 200ms;
+  text-shadow: 0 1px 3px rgba(18,38,62,0.22);
+}
+.site-nav a:hover { color: rgba(255,255,255,0.9); }
+
+/* ── recast button ── */
+
+.recast-btn {
+  position: fixed;
+  top: 52%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Cedarville Cursive', cursive;
+  font-size: 30px;
+  color: rgba(255,255,255,0.82);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 16px 28px;
+  letter-spacing: 0.03em;
+  z-index: 30;
+  opacity: 0;
+  pointer-events: none;
+  transition: color 200ms, opacity 1.2s ease;
+  text-shadow: 0 2px 12px rgba(18,38,62,0.38), 0 1px 3px rgba(18,38,62,0.22);
+}
+.recast-btn:hover { color: rgba(255,255,255,1); }
+.recast-btn.visible { opacity: 1; pointer-events: auto; }
+
+/* ── guestbook / inner pages ── */
+
+.inner-body {
+  overflow-y: auto;
+  height: 100%;
+  background: url('../assets/background/clouds2.png') center / cover no-repeat fixed;
+}
+
+.inner-page {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 64px 48px 100px;
+}
+
+.inner-page h1 {
+  font-family: 'Fraunces', serif;
+  font-size: 28px;
+  font-weight: 400;
+  color: var(--warm-white);
+  margin-bottom: 8px;
+}
+
+.inner-page .sub {
+  font-family: 'Cedarville Cursive', cursive;
+  font-size: 14px;
+  color: rgba(255,255,255,0.58);
+  margin-bottom: 48px;
+}
+
+.inner-back {
+  display: inline-block;
+  font-family: 'Cedarville Cursive', cursive;
+  font-size: 13px;
+  color: rgba(255,255,255,0.58);
+  text-decoration: none;
+  margin-bottom: 40px;
+  letter-spacing: 0.01em;
+}
+.inner-back:hover { color: rgba(255,255,255,0.88); }
+
+/* guestbook entries — each entry is a paper card with slight scatter */
+
+.guestbook-surface {
+  position: relative;
+  width: 100%;
+  padding-bottom: 140px;
+}
+
+#entries {
+  position: relative;
+  width: 100%;
+}
+
+.entry {
+  position: absolute;
+  padding: 22px 26px 18px;
+  box-shadow: 3px 6px 26px rgba(28,18,8,0.16), 1px 2px 8px rgba(28,18,8,0.09);
+}
+
+.entry-rect {
+  background: url('../assets/cards_rect_fb.png') center / 100% 100% no-repeat;
+  width: clamp(260px, 28vw, 400px);
+}
+
+.entry-sq {
+  background: url('../assets/cards_sq_fb.png') center / 100% 100% no-repeat;
+  width: clamp(220px, 22vw, 320px);
+}
+
+.guestbook-header {
+  max-width: 100%;
+  margin-left: 0;
+  padding-bottom: 48px;
+}
+
+.entry-score {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: 14px;
+  color: var(--ink-mid);
+  margin-bottom: 10px;
+}
+
+.entry-charm {
+  font-family: 'Cedarville Cursive', cursive;
+  font-size: 11px;
+  color: var(--ink-ghost);
+  margin-left: 6px;
+}
+
+.entry-note {
+  font-family: 'Cedarville Cursive', cursive;
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--ink);
+  margin-bottom: 12px;
+}
+
+.entry-time {
+  font-family: 'Cedarville Cursive', cursive;
+  font-size: 11px;
+  color: var(--ink-ghost);
+}
+
+.guestbook-gate {
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.guestbook-gate p {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: 18px;
+  color: rgba(255,255,255,0.8);
+  margin-bottom: 16px;
+  line-height: 1.6;
+}
+
+.guestbook-gate a {
+  font-family: 'Cedarville Cursive', cursive;
+  font-size: 13px;
+  color: rgba(255,255,255,0.58);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* lineage page */
+
+.lineage-page h1 {
+  margin-bottom: 36px;
+}
+
+.lineage-epigraph {
+  margin-bottom: 8px;
+}
+
+.lineage-epigraph p {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: 15px;
+  line-height: 2;
+  color: rgba(255,255,255,0.72);
+}
+
+.lineage-text {
+  margin-bottom: 4px;
+}
+
+.lineage-text p {
+  font-family: 'Alegreya', serif;
+  font-size: 17px;
+  line-height: 1.9;
+  color: rgba(255,255,255,0.82);
+  margin-bottom: 20px;
+}
+
+.lineage-text em {
+  font-style: italic;
+}
+
+.lineage-attribution {
+  font-family: 'Alegreya', serif;
+  font-style: italic;
+  font-size: 14px;
+  line-height: 1.8;
+  color: rgba(255,255,255,0.48);
+  margin-top: 8px;
+}
+
+/* origins */
+.origins-section { margin-bottom: 44px; }
+
+.origins-section h2 {
+  font-family: 'Fraunces', serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--warm-white);
+  margin-bottom: 12px;
+}
+
+.origins-section p, .origins-section li {
+  font-family: 'Alegreya', serif;
+  font-size: 16px;
+  line-height: 1.8;
+  color: rgba(255,255,255,0.78);
+  margin-bottom: 8px;
+}
+
+.origins-section ul { list-style: none; padding: 0; }
+
+.origins-section li::before {
+  content: '— ';
+  color: rgba(255,255,255,0.38);
+}
+
+.origins-section a {
+  color: rgba(255,255,255,0.72);
+  text-underline-offset: 3px;
+}
+
+.origins-divider {
+  border: none;
+  border-top: 1px solid rgba(255,255,255,0.15);
+  margin: 40px 0;
+}
+
+.loading-text, .error-text {
+  font-family: 'Cedarville Cursive', cursive;
+  font-size: 14px;
+  color: rgba(255,255,255,0.48);
+  text-align: center;
+  padding: 40px;
+}
+
+/* ── grimoire index page ── */
+
+.grimoire-index-intro {
+  font-family: 'Cedarville Cursive', cursive;
+  font-size: 14px;
+  color: rgba(255,255,255,0.52);
+  margin: -12px 0 48px;
+  letter-spacing: 0.01em;
+}
+
+.grimoire-index-loading {
+  font-family: 'Cedarville Cursive', cursive;
+  font-size: 14px;
+  color: rgba(255,255,255,0.44);
+  text-align: center;
+  padding: 40px 0;
+}
+
+.charm-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.charm-entry {
+  padding: 36px 0;
+  border-top: 1px solid rgba(255,255,255,0.12);
+}
+
+.charm-entry:last-child {
+  border-bottom: 1px solid rgba(255,255,255,0.12);
+}
+
+.ci-charm-header {
+  margin-bottom: 24px;
+}
+
+.ci-charm-name {
+  display: block;
+  font-family: 'Fraunces', serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.92);
+  letter-spacing: 0.01em;
+  margin-bottom: 6px;
+}
+
+.ci-charm-throughline {
+  display: block;
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: 15px;
+  color: rgba(255,255,255,0.62);
+  line-height: 1.6;
+}
+
+.ci-scores {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-left: 18px;
+  border-left: 1px solid rgba(255,255,255,0.1);
+}
+
+.ci-score-title {
+  font-family: 'Fraunces', serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.78);
+  letter-spacing: 0.02em;
+  margin: 0 0 5px;
+}
+
+.ci-score-line {
+  font-family: 'Fraunces', serif;
+  font-size: 14px;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.7;
+  margin: 0;
+}
+
+.ci-score-closing {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: 13px;
+  color: rgba(255,255,255,0.46);
+  margin: 4px 0 0;
+}
+
+/* ── site header ── */
+
+.site-header {
+  position: fixed;
+  top: 22px;
+  left: 28px;
+  z-index: 40;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.site-title {
+  font-family: 'Fraunces', serif;
+  font-size: 13px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.82);
+  letter-spacing: 0.02em;
+  text-shadow: 0 1px 4px rgba(18,38,62,0.35);
+}
+
+.orientation-line {
+  font-family: 'Cedarville Cursive', cursive;
+  font-size: 11px;
+  color: rgba(255,255,255,0.52);
+  letter-spacing: 0.01em;
+  text-shadow: 0 1px 3px rgba(18,38,62,0.25);
+}
+
+/* ── cast trigger ── */
+
+.cast-trigger {
+  position: fixed;
+  top: 52%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Cedarville Cursive', cursive;
+  font-size: 32px;
+  color: rgba(255,255,255,0.86);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 16px 28px;
+  letter-spacing: 0.03em;
+  z-index: 30;
+  text-shadow: 0 2px 12px rgba(18,38,62,0.38), 0 1px 3px rgba(18,38,62,0.22);
+  transition: color 200ms, opacity 500ms ease;
+}
+
+.cast-trigger:hover { color: rgba(255,255,255,1); }
+.cast-trigger.hidden { opacity: 0; pointer-events: none; }
+
+/* ── mobile ── */
+@media (max-width: 600px) {
+  /* header */
+  .orientation-line { display: none; }
+  .site-header { top: 16px; left: 16px; }
+
+  /* charms — slightly smaller so nothing clips hard at viewport edges */
+  .charm img { width: 80px; }
+  /* tighter hit area — 80px images don't need 20px extension, and overlap causes misfires */
+  .charm::before { inset: -8px; }
+
+  /* cast / recast — generous tap targets */
+  .cast-trigger { font-size: 28px; padding: 20px 32px; }
+  .recast-btn   { font-size: 26px; padding: 20px 32px; }
+
+  /* through-line — clear the site title, tighter leading for long ones */
+  .through-line { top: 52px; max-width: 88vw; line-height: 1.4; }
+
+  /* notice — top of field, below the title, away from charms */
+  .notice-text { font-size: 13px; top: 44px; bottom: auto; }
+
+  /* drag hint — not useful on touch */
+  .drag-hint { display: none !important; }
+
+  /* score cluster — vertical scrolling column */
+  .scores-cluster {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    padding: 140px 16px 80px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    pointer-events: auto;
+  }
+
+  /* score cards — in-flow, full width, tap-only */
+  .score-card {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    width: calc(100vw - 32px) !important;
+    max-width: 400px;
+    padding: 16px 18px 14px;
+    touch-action: pan-y;
+    cursor: pointer;
+  }
+
+  .score-title      { font-size: 17px; }
+  .score-body-text  { font-size: 15px; }
+  .score-take-hint  { font-size: 13px; margin-top: 12px; }
+
+  /* note prompt — no drag, keyboard-safe, clears the nav pill */
+  .note-prompt {
+    touch-action: auto;
+    padding: 10px 16px max(64px, env(safe-area-inset-bottom));
+  }
+  .note-drag-handle { display: none; }
+  .note-card        { transform: none; max-width: 100%; }
+  textarea#note-input { height: 72px; min-height: 72px; }
+  .note-submit      { min-height: 44px; padding: 10px 22px; }
+
+  /* nav — frosted pill so it reads against cards, sky, anything */
+  .site-nav {
+    bottom: 16px;
+    right: 16px;
+    gap: 12px;
+    background: rgba(18, 38, 62, 0.52);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    padding: 8px 14px;
+    border-radius: 20px;
+  }
+  .site-nav a { font-size: 12px; color: rgba(255,255,255,0.82); }
+
+  /* inner pages */
+  .inner-page { padding: 48px 20px 80px; }
+
+  /* guestbook — flow layout (JS also switches to flow on mobile) */
+  .guestbook-surface { padding-bottom: 40px; }
+
+  #entries {
+    height: auto !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 0 20px 60px;
+  }
+
+  .entry {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    width: 100% !important;
+  }
+
+  /* force rect card texture on mobile — sq cards look odd at full width */
+  .entry-sq {
+    width: 100% !important;
+    background-image: url('../assets/cards_rect_fb.png');
+  }
+}

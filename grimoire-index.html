@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>the index — the grimoire</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="inner-body">
+
+  <div class="inner-page grimoire-index-page">
+    <a href="index.html" class="inner-back">← back to the field</a>
+
+    <h1>the grimoire of tiny rebellions</h1>
+
+    <p class="grimoire-index-intro">the whole thing, laid out to be read.</p>
+
+    <div id="charm-list" class="charm-list">
+      <p class="grimoire-index-loading">loading…</p>
+    </div>
+  </div>
+
+  <nav class="site-nav visible">
+    <a href="guestbook.html">what others took</a>
+    <a href="origins.html">lineage</a>
+    <a href="grimoire-index.html">the index</a>
+  </nav>
+
+  <script>
+    fetch('./data/charms.json')
+      .then(r => r.json())
+      .then(json => {
+        const list = document.getElementById('charm-list');
+        list.innerHTML = '';
+
+        json.charms.forEach(charm => {
+          const entry = document.createElement('div');
+          entry.className = 'charm-entry';
+
+          const scores = charm.scores.map(score => {
+            const bodyHtml = score.body.map(line => `<p class="ci-score-line">${line}</p>`).join('');
+            const closingHtml = score.closing
+              ? `<p class="ci-score-closing">${score.closing}</p>`
+              : '';
+            return `
+              <div class="ci-score">
+                <p class="ci-score-title">${score.title}</p>
+                ${bodyHtml}${closingHtml}
+              </div>`;
+          }).join('');
+
+          entry.innerHTML = `
+            <div class="ci-charm-header">
+              <span class="ci-charm-name">${charm.name}</span>
+              <span class="ci-charm-throughline">${charm.throughline}</span>
+            </div>
+            <div class="ci-scores">${scores}</div>
+          `;
+
+          list.appendChild(entry);
+        });
+      })
+      .catch(() => {
+        document.getElementById('charm-list').innerHTML =
+          '<p class="grimoire-index-loading">could not load the grimoire.</p>';
+      });
+  </script>
+
+</body>
+</html>

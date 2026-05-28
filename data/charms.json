@@ -1,0 +1,1382 @@
+{
+  "pool": 29,
+  "draw": 13,
+  "note": "on each page load, draw 13 charms at random from the full pool. re-randomize on every visit.",
+  "charms": [
+    {
+      "id": "witchy-marble",
+      "name": "the witchy marble",
+      "image": "witchy-marble.png",
+      "throughline": "the marble doesn't care about arriving. it goes where it goes.",
+      "entrance": "drops-spins-flat",
+      "scores": [
+        {
+          "title": "the long way round",
+          "body": [
+            "take the route that wastes the most time.",
+            "don't account for it when you arrive."
+          ],
+          "closing": null
+        },
+        {
+          "title": "no plan",
+          "body": [
+            "choose one hour this week with nothing scheduled in it.",
+            "make no plan for it."
+          ],
+          "closing": "see what arrives."
+        },
+        {
+          "title": "the incomplete",
+          "body": [
+            "find something you abandoned.",
+            "spend five minutes with it without trying to finish it.",
+            "put it down again."
+          ],
+          "closing": "incompletion is also a form."
+        },
+        {
+          "title": "the wrong answer",
+          "body": [
+            "write down the wrong answer to a problem you're stuck on.",
+            "describe it fully."
+          ],
+          "closing": "see what it knows that the right answer doesn't."
+        }
+      ]
+    },
+    {
+      "id": "spool-of-thread",
+      "name": "spool of thread",
+      "image": "spool-of-thread.png",
+      "throughline": "thread connects two points. you can follow it back. the spool is wound up, waiting — more of it than you can see.",
+      "entrance": "drops-slight-bounce",
+      "scores": [
+        {
+          "title": "the slow question",
+          "body": [
+            "write a question you've been sitting with.",
+            "mail it to yourself.",
+            "answer it when it arrives."
+          ],
+          "closing": null
+        },
+        {
+          "title": "borrowed object",
+          "body": [
+            "borrow something small from someone.",
+            "carry it for a day as though its history is partly yours.",
+            "return it before you explain what you were doing."
+          ],
+          "closing": null
+        },
+        {
+          "title": "postcard to the unknown",
+          "body": [
+            "addressed to: whoever needs it.",
+            "write something neighborly.",
+            "leave it somewhere a stranger might find it."
+          ],
+          "closing": "the world reads back, eventually."
+        },
+        {
+          "title": "carry it until",
+          "body": [
+            "pick up an object near you.",
+            "carry it until someone asks about it.",
+            "tell them the true reason you chose it — even if you have to invent it in the moment of telling."
+          ],
+          "closing": null
+        }
+      ]
+    },
+    {
+      "id": "stone",
+      "name": "stone",
+      "image": "stone.png",
+      "throughline": "older than everything else in the set. completely indifferent. it's about slowing all the way down until something arrives.",
+      "entrance": "drops-no-bounce",
+      "scores": [
+        {
+          "title": "half speed",
+          "body": [
+            "do the next thing you were going to do at half the speed."
+          ],
+          "closing": "notice what you would have skipped."
+        },
+        {
+          "title": "the slow walk",
+          "body": [
+            "walk somewhere you normally hurry through.",
+            "match your pace to the slowest person you can see."
+          ],
+          "closing": null
+        },
+        {
+          "title": "ten minutes",
+          "body": [
+            "set a timer for ten minutes.",
+            "do something with no output.",
+            "when it ends, resist the urge to account for it."
+          ],
+          "closing": "the ten minutes happened anyway."
+        },
+        {
+          "title": "the drawer",
+          "body": [
+            "write down the most obvious solution to a problem you have.",
+            "put it in a drawer.",
+            "don't look at it for three days."
+          ],
+          "closing": "see what arrived in the meantime."
+        }
+      ]
+    },
+    {
+      "id": "frog-key",
+      "name": "the frog clip",
+      "image": "frog-key.png",
+      "throughline": "it works even though it's silly. permission to be unserious about serious things.",
+      "entrance": "falls-rotates-once",
+      "scores": [
+        {
+          "title": "laugh incorrectly",
+          "body": [
+            "laugh out loud at something only mildly funny.",
+            "stop when the laugh becomes real."
+          ],
+          "closing": "some emotions need a doorway."
+        },
+        {
+          "title": "the wrong answer",
+          "body": [
+            "write down the wrong answer to a problem you're stuck on.",
+            "describe it fully."
+          ],
+          "closing": "see what it knows that the right answer doesn't."
+        },
+        {
+          "title": "the wrong hand",
+          "body": [
+            "make something using only your non-dominant hand.",
+            "don't apologize for how it turns out."
+          ],
+          "closing": "the hand that doesn't know what it's doing often gets closer to the thing."
+        },
+        {
+          "title": "no plan",
+          "body": [
+            "choose one hour this week with nothing scheduled in it.",
+            "make no plan for it."
+          ],
+          "closing": "see what arrives."
+        }
+      ]
+    },
+    {
+      "id": "skeleton-key",
+      "name": "skeleton key",
+      "image": "skeleton-key.png",
+      "throughline": "the door you haven't tried yet. unlocking is only possible if you go to the door first.",
+      "entrance": "falls-rotates-once",
+      "scores": [
+        {
+          "title": "mark the threshold",
+          "body": [
+            "mark a threshold you cross regularly.",
+            "it doesn't mean anything yet.",
+            "cross it every time you leave."
+          ],
+          "closing": "see if it starts to."
+        },
+        {
+          "title": "the bad idea",
+          "body": [
+            "write down the idea you've been dismissing as bad.",
+            "describe it fully, as though it were good."
+          ],
+          "closing": "see what it contains."
+        },
+        {
+          "title": "before you're ready",
+          "body": [
+            "identify something you're waiting until you're ready to do.",
+            "do a one-minute version of it now."
+          ],
+          "closing": "readiness is sometimes a story about the future that the body resolves in the present."
+        },
+        {
+          "title": "not solo",
+          "body": [
+            "the next thing you were going to do alone.",
+            "call a friend and stay on the phone while you do it.",
+            "make tea, take out the garbage, send an email."
+          ],
+          "closing": null
+        }
+      ]
+    },
+    {
+      "id": "domino",
+      "name": "domino",
+      "image": "domino.png",
+      "throughline": "yet to be played. the space between knowing and being.",
+      "entrance": "tips-over-lands-flat",
+      "scores": [
+        {
+          "title": "i might be wrong",
+          "body": [
+            "the next time you're certain you're right,",
+            "say i might be wrong about this before you continue."
+          ],
+          "closing": "notice if you continue differently."
+        },
+        {
+          "title": "the gap",
+          "body": [
+            "write down something you understand but haven't yet become.",
+            "fold the paper.",
+            "put it somewhere you'll find it in a week."
+          ],
+          "closing": "understanding and being-otherwise move at different speeds."
+        },
+        {
+          "title": "the wrong expert",
+          "body": [
+            "ask someone younger than you how they'd do something.",
+            "try their suggestion once."
+          ],
+          "closing": "expertise travels in one direction until it doesn't."
+        },
+        {
+          "title": "the unfinished",
+          "body": [
+            "find something you left half-done.",
+            "sit with it for five minutes without touching it.",
+            "leave it half-done again."
+          ],
+          "closing": null
+        }
+      ]
+    },
+    {
+      "id": "button",
+      "name": "button",
+      "image": "button.png",
+      "throughline": "held something closed, past tense. now separated from its original function. things taken out of context.",
+      "entrance": "drops-tiny-bounce",
+      "scores": [
+        {
+          "title": "the rescued thing",
+          "body": [
+            "find something you were about to discard.",
+            "keep it for one week."
+          ],
+          "closing": "see if your reason for discarding it changes."
+        },
+        {
+          "title": "the gap",
+          "body": [
+            "write down something you understand but haven't yet become.",
+            "fold the paper.",
+            "put it somewhere you'll find it in a week."
+          ],
+          "closing": "understanding and being-otherwise move at different speeds."
+        },
+        {
+          "title": "the unfinished",
+          "body": [
+            "find something you left half-done.",
+            "sit with it for five minutes without touching it.",
+            "leave it half-done again."
+          ],
+          "closing": null
+        },
+        {
+          "title": "laugh incorrectly",
+          "body": [
+            "laugh out loud at something only mildly funny.",
+            "stop when the laugh becomes real."
+          ],
+          "closing": "some emotions need a doorway."
+        }
+      ]
+    },
+    {
+      "id": "shell",
+      "name": "shell",
+      "image": "shell.png",
+      "throughline": "carries the shape of what used to live in it. attending to what's already there before you arrived.",
+      "entrance": "rocks-once-settles",
+      "scores": [
+        {
+          "title": "the existing movement",
+          "body": [
+            "look out a window.",
+            "find something that was already moving before you looked.",
+            "watch it until it does something you didn't expect."
+          ],
+          "closing": "the world rarely waits for our attention."
+        },
+        {
+          "title": "the slow question",
+          "body": [
+            "write a question you've been sitting with.",
+            "mail it to yourself.",
+            "answer it when it arrives."
+          ],
+          "closing": null
+        },
+        {
+          "title": "three things",
+          "body": [
+            "find a living thing.",
+            "whisper three things you've almost stopped believing could still happen.",
+            "every time you tend to it, remember one."
+          ],
+          "closing": null
+        },
+        {
+          "title": "jar of small things",
+          "body": [
+            "place a container somewhere visible.",
+            "each time something small but unexpected happens, note it.",
+            "open it at the end of the month and read it back."
+          ],
+          "closing": null
+        }
+      ]
+    },
+    {
+      "id": "box-of-matches",
+      "name": "box of matches",
+      "image": "box-of-matches.png",
+      "throughline": "a timer you're holding. permission with a built-in expiration. you cannot hold it forever.",
+      "entrance": "drops-fast-straight",
+      "scores": [
+        {
+          "title": "thirty seconds of wrong",
+          "body": [
+            "for thirty seconds, do something you normally wouldn't allow yourself to do.",
+            "stop. return."
+          ],
+          "closing": "notice if anything loosened."
+        },
+        {
+          "title": "the temporary rule",
+          "body": [
+            "invent a small rule for the next hour.",
+            "tell no one.",
+            "follow it completely.",
+            "let it expire."
+          ],
+          "closing": null
+        },
+        {
+          "title": "carry it until",
+          "body": [
+            "pick up an object near you.",
+            "carry it until someone asks about it.",
+            "tell them the true reason you chose it — even if you have to invent it in the moment of telling."
+          ],
+          "closing": null
+        },
+        {
+          "title": "flame focus",
+          "body": [
+            "light a candle for a task you want to take seriously.",
+            "blow it out when the task is done."
+          ],
+          "closing": null
+        }
+      ]
+    },
+    {
+      "id": "stamp",
+      "name": "stamp",
+      "image": "stamp.png",
+      "throughline": "doesn't send anything on its own. permission to travel, but someone has to receive it.",
+      "entrance": "drops-flips-once-lands-face-up",
+      "scores": [
+        {
+          "title": "say it out loud",
+          "body": [
+            "identify something you've been trying to figure out alone.",
+            "tell one person you haven't figured it out yet.",
+            "don't follow it with a plan."
+          ],
+          "closing": null
+        },
+        {
+          "title": "ask the room",
+          "body": [
+            "bring a problem you've been solving alone.",
+            "ask the least likely person what they'd do.",
+            "write their answer down before you respond to it."
+          ],
+          "closing": null
+        },
+        {
+          "title": "borrow a certainty",
+          "body": [
+            "ask someone you don't know well what they're sure of.",
+            "write it down without commentary.",
+            "carry it for the day."
+          ],
+          "closing": "certainty ages quickly."
+        },
+        {
+          "title": "borrowed object",
+          "body": [
+            "borrow something small from someone.",
+            "carry it for a day as though its history is partly yours.",
+            "return it before you explain what you were doing."
+          ],
+          "closing": null
+        }
+      ]
+    },
+    {
+      "id": "eraser",
+      "name": "eraser",
+      "image": "eraser.png",
+      "throughline": "you can make marks because you have this. permission disguised as protection.",
+      "entrance": "drops-slight-bounce",
+      "scores": [
+        {
+          "title": "before you're ready",
+          "body": [
+            "identify something you're waiting until you're ready to do.",
+            "do a one-minute version of it now."
+          ],
+          "closing": "readiness is sometimes a story about the future that the body resolves in the present."
+        },
+        {
+          "title": "stay in it",
+          "body": [
+            "the next time you want to change the subject, don't.",
+            "stay in the thing for one more minute than feels comfortable."
+          ],
+          "closing": null
+        },
+        {
+          "title": "moon time",
+          "body": [
+            "start a drawing.",
+            "look at it again during the next full moon.",
+            "do not finish it."
+          ],
+          "closing": null
+        },
+        {
+          "title": "the slow walk",
+          "body": [
+            "walk somewhere you normally hurry through.",
+            "match your pace to the slowest person you can see."
+          ],
+          "closing": null
+        }
+      ]
+    },
+    {
+      "id": "googly-eye",
+      "name": "googly eye",
+      "image": "googly-eye.png",
+      "throughline": "the whole site is about what you see first. the googly eye is the charm that sees back.",
+      "entrance": "drops-pupil-rattles-after",
+      "scores": [
+        {
+          "title": "peripheral vision",
+          "body": [
+            "without moving your eyes, notice three things happening at the edges of your vision."
+          ],
+          "closing": "the center is not the only place where life occurs."
+        },
+        {
+          "title": "the existing movement",
+          "body": [
+            "look out a window.",
+            "find something that was already moving before you looked.",
+            "watch it until it does something you didn't expect."
+          ],
+          "closing": "the world rarely waits for our attention."
+        },
+        {
+          "title": "ask the object",
+          "body": [
+            "pick up an object near you.",
+            "ask it silently: what do you want to be used for?",
+            "use it that way once today."
+          ],
+          "closing": "imagination sometimes restores function."
+        },
+        {
+          "title": "the slower thought",
+          "body": [
+            "write something you've been thinking about by hand, slowly."
+          ],
+          "closing": "notice what changes when the thought has to slow down to become legible."
+        }
+      ]
+    },
+    {
+      "id": "small-plastic-dinosaur",
+      "name": "small plastic dinosaur",
+      "image": "small-plastic-dinosaur.png",
+      "throughline": "extinct, bright green, kind of goofy. existed fully and then stopped. still somehow here.",
+      "entrance": "falls-tips-forward-recovers",
+      "scores": [
+        {
+          "title": "no record",
+          "body": [
+            "do something today that will leave no trace.",
+            "don't document it. don't tell anyone."
+          ],
+          "closing": "let it have happened anyway."
+        },
+        {
+          "title": "the wrong answer",
+          "body": [
+            "write down the wrong answer to a problem you're stuck on.",
+            "describe it fully."
+          ],
+          "closing": "see what it knows that the right answer doesn't."
+        },
+        {
+          "title": "before you're ready",
+          "body": [
+            "identify something you're waiting until you're ready to do.",
+            "do a one-minute version of it now."
+          ],
+          "closing": "readiness is sometimes a story about the future that the body resolves in the present."
+        },
+        {
+          "title": "the unfinished",
+          "body": [
+            "find something you left half-done.",
+            "sit with it for five minutes without touching it.",
+            "leave it half-done again."
+          ],
+          "closing": null
+        }
+      ]
+    },
+    {
+      "id": "d20",
+      "name": "D20",
+      "image": "d20.png",
+      "throughline": "the outcome is already determined. you just haven't looked yet.",
+      "entrance": "tumbles-settles",
+      "scores": [
+        {
+          "title": "heads or tails",
+          "body": [
+            "flip something for a question you've been circling.",
+            "live with what it says for twenty-four hours.",
+            "then decide again, if you want to."
+          ],
+          "closing": null
+        },
+        {
+          "title": "the temporary rule",
+          "body": [
+            "invent a small rule for the next hour.",
+            "tell no one.",
+            "follow it completely.",
+            "let it expire."
+          ],
+          "closing": null
+        },
+        {
+          "title": "thirty seconds of wrong",
+          "body": [
+            "for thirty seconds, do something you normally wouldn't allow yourself to do.",
+            "stop. return."
+          ],
+          "closing": "notice if anything loosened."
+        },
+        {
+          "title": "the drawer",
+          "body": [
+            "write down the most obvious solution to a problem you have.",
+            "put it in a drawer.",
+            "don't look at it for three days."
+          ],
+          "closing": "see what arrived in the meantime."
+        }
+      ]
+    },
+    {
+      "id": "pocket-watch",
+      "name": "pocket watch",
+      "image": "pocket-watch.png",
+      "throughline": "time you're not tracking. permission to stop counting.",
+      "entrance": "drops-swings-once-settles",
+      "scores": [
+        {
+          "title": "ten minutes",
+          "body": [
+            "set a timer for ten minutes.",
+            "do something with no output.",
+            "when it ends, resist the urge to account for it."
+          ],
+          "closing": "the ten minutes happened anyway."
+        },
+        {
+          "title": "half speed",
+          "body": [
+            "do the next thing you were going to do at half the speed."
+          ],
+          "closing": "notice what you would have skipped."
+        },
+        {
+          "title": "the slow walk",
+          "body": [
+            "walk somewhere you normally hurry through.",
+            "match your pace to the slowest person you can see."
+          ],
+          "closing": null
+        },
+        {
+          "title": "moon time",
+          "body": [
+            "start a drawing.",
+            "look at it again during the next full moon.",
+            "do not finish it."
+          ],
+          "closing": null
+        }
+      ]
+    },
+    {
+      "id": "acorn",
+      "name": "acorn",
+      "image": "acorn.png",
+      "throughline": "everything it will become is already inside it. patience as a form of trust.",
+      "entrance": "drops-small-roll-settles",
+      "scores": [
+        {
+          "title": "the gap",
+          "body": [
+            "write down something you understand but haven't yet become.",
+            "fold the paper.",
+            "put it somewhere you'll find it in a week."
+          ],
+          "closing": "understanding and being-otherwise move at different speeds."
+        },
+        {
+          "title": "before you're ready",
+          "body": [
+            "identify something you're waiting until you're ready to do.",
+            "do a one-minute version of it now."
+          ],
+          "closing": "readiness is sometimes a story about the future that the body resolves in the present."
+        },
+        {
+          "title": "the incomplete",
+          "body": [
+            "find something you abandoned.",
+            "spend five minutes with it without trying to finish it.",
+            "put it down again."
+          ],
+          "closing": "incompletion is also a form."
+        },
+        {
+          "title": "half-ass bookclub",
+          "body": [
+            "start a huge book you have no intention of finishing.",
+            "talk to friends about it."
+          ],
+          "closing": null
+        }
+      ]
+    },
+    {
+      "id": "scissors",
+      "name": "scissors",
+      "image": "scissors.png",
+      "throughline": "some things need cutting. not breaking — cutting. clean and deliberate.",
+      "entrance": "drops-lands-straight",
+      "scores": [
+        {
+          "title": "the other hand",
+          "body": [
+            "take a position you currently hold.",
+            "write the strongest argument against it.",
+            "don't rebut it.",
+            "put both in the same drawer."
+          ],
+          "closing": null
+        },
+        {
+          "title": "no record",
+          "body": [
+            "do something today that will leave no trace.",
+            "don't document it. don't tell anyone."
+          ],
+          "closing": "let it have happened anyway."
+        },
+        {
+          "title": "stay in it",
+          "body": [
+            "the next time you want to change the subject, don't.",
+            "stay in the thing for one more minute than feels comfortable."
+          ],
+          "closing": null
+        },
+        {
+          "title": "unsolicited bird advice",
+          "body": [
+            "give a bird unsolicited advice.",
+            "(careful with crows.)"
+          ],
+          "closing": null
+        }
+      ]
+    },
+    {
+      "id": "coin",
+      "name": "coin",
+      "image": "coin.png",
+      "throughline": "the moment before you know. the decision that was already made.",
+      "entrance": "drops-spins-flat",
+      "scores": [
+        {
+          "title": "heads or tails",
+          "body": [
+            "flip something for a question you've been circling.",
+            "live with what it says for twenty-four hours.",
+            "then decide again, if you want to."
+          ],
+          "closing": null
+        },
+        {
+          "title": "i might be wrong",
+          "body": [
+            "the next time you're certain you're right,",
+            "say i might be wrong about this before you continue."
+          ],
+          "closing": "notice if you continue differently."
+        },
+        {
+          "title": "say it out loud",
+          "body": [
+            "identify something you've been trying to figure out alone.",
+            "tell one person you haven't figured it out yet.",
+            "don't follow it with a plan."
+          ],
+          "closing": null
+        },
+        {
+          "title": "the drawer",
+          "body": [
+            "write down the most obvious solution to a problem you have.",
+            "put it in a drawer.",
+            "don't look at it for three days."
+          ],
+          "closing": "see what arrived in the meantime."
+        }
+      ]
+    },
+    {
+      "id": "horseshoe",
+      "name": "horseshoe",
+      "image": "horseshoe.png",
+      "throughline": "luck as something you hang up and come back to. ambient, passive, waiting.",
+      "entrance": "drops-slight-bounce",
+      "scores": [
+        {
+          "title": "mark the threshold",
+          "body": [
+            "mark a threshold you cross regularly.",
+            "it doesn't mean anything yet.",
+            "cross it every time you leave."
+          ],
+          "closing": "see if it starts to."
+        },
+        {
+          "title": "jar of small things",
+          "body": [
+            "place a container somewhere visible.",
+            "each time something small but unexpected happens, note it.",
+            "open it at the end of the month and read it back."
+          ],
+          "closing": null
+        },
+        {
+          "title": "the existing movement",
+          "body": [
+            "look out a window.",
+            "find something that was already moving before you looked.",
+            "watch it until it does something you didn't expect."
+          ],
+          "closing": "the world rarely waits for our attention."
+        },
+        {
+          "title": "no plan",
+          "body": [
+            "choose one hour this week with nothing scheduled in it.",
+            "make no plan for it."
+          ],
+          "closing": "see what arrives."
+        }
+      ]
+    },
+    {
+      "id": "ring",
+      "name": "ring",
+      "image": "ring.png",
+      "throughline": "worn on the body. a promise you made to yourself or forgot you made.",
+      "entrance": "drops-rolls-settles",
+      "scores": [
+        {
+          "title": "the gap",
+          "body": [
+            "write down something you understand but haven't yet become.",
+            "fold the paper.",
+            "put it somewhere you'll find it in a week."
+          ],
+          "closing": "understanding and being-otherwise move at different speeds."
+        },
+        {
+          "title": "carry it until",
+          "body": [
+            "pick up an object near you.",
+            "carry it until someone asks about it.",
+            "tell them the true reason you chose it — even if you have to invent it in the moment of telling."
+          ],
+          "closing": null
+        },
+        {
+          "title": "borrowed object",
+          "body": [
+            "borrow something small from someone.",
+            "carry it for a day as though its history is partly yours.",
+            "return it before you explain what you were doing."
+          ],
+          "closing": null
+        },
+        {
+          "title": "three things",
+          "body": [
+            "find a living thing.",
+            "whisper three things you've almost stopped believing could still happen.",
+            "every time you tend to it, remember one."
+          ],
+          "closing": null
+        }
+      ]
+    },
+    {
+      "id": "crystal",
+      "name": "shattuckite",
+      "image": "crystal.png",
+      "throughline": "looks like it should be magic. might just be a rock. the meaning you bring to it is the meaning it has.",
+      "entrance": "drops-slight-glint-settles",
+      "scores": [
+        {
+          "title": "ask the object",
+          "body": [
+            "pick up an object near you.",
+            "ask it silently: what do you want to be used for?",
+            "use it that way once today."
+          ],
+          "closing": "imagination sometimes restores function."
+        },
+        {
+          "title": "peripheral vision",
+          "body": [
+            "without moving your eyes, notice three things happening at the edges of your vision."
+          ],
+          "closing": "the center is not the only place where life occurs."
+        },
+        {
+          "title": "borrow a certainty",
+          "body": [
+            "ask someone you don't know well what they're sure of.",
+            "write it down without commentary.",
+            "carry it for the day."
+          ],
+          "closing": "certainty ages quickly."
+        },
+        {
+          "title": "the wrong answer",
+          "body": [
+            "write down the wrong answer to a problem you're stuck on.",
+            "describe it fully."
+          ],
+          "closing": "see what it knows that the right answer doesn't."
+        }
+      ]
+    },
+    {
+      "id": "death-stone",
+      "name": "death stone",
+      "image": "death-stone.png",
+      "throughline": "a plain rock someone named death. carries a story you don't know.",
+      "entrance": "drops-no-bounce",
+      "scores": [
+        {
+          "title": "no record",
+          "body": [
+            "do something today that will leave no trace.",
+            "don't document it. don't tell anyone."
+          ],
+          "closing": "let it have happened anyway."
+        },
+        {
+          "title": "the rescued thing",
+          "body": [
+            "find something you were about to discard.",
+            "keep it for one week."
+          ],
+          "closing": "see if your reason for discarding it changes."
+        },
+        {
+          "title": "borrowed object",
+          "body": [
+            "borrow something small from someone.",
+            "carry it for a day as though its history is partly yours.",
+            "return it before you explain what you were doing."
+          ],
+          "closing": null
+        },
+        {
+          "title": "postcard to the unknown",
+          "body": [
+            "addressed to: whoever needs it.",
+            "write something neighborly.",
+            "leave it somewhere a stranger might find it."
+          ],
+          "closing": "the world reads back, eventually."
+        }
+      ]
+    },
+    {
+      "id": "tic-tacs",
+      "name": "teeny tic-tacs",
+      "image": "tic-tacs.png",
+      "throughline": "the most ordinary thing or is it. carried in pockets, offered to strangers. maybe it's about the unremarkable.",
+      "entrance": "drops-rattles-settles",
+      "scores": [
+        {
+          "title": "half speed",
+          "body": [
+            "do the next thing you were going to do at half the speed."
+          ],
+          "closing": "notice what you would have skipped."
+        },
+        {
+          "title": "borrow a certainty",
+          "body": [
+            "ask someone you don't know well what they're sure of.",
+            "write it down without commentary.",
+            "carry it for the day."
+          ],
+          "closing": "certainty ages quickly."
+        },
+        {
+          "title": "the slow walk",
+          "body": [
+            "walk somewhere you normally hurry through.",
+            "match your pace to the slowest person you can see."
+          ],
+          "closing": null
+        },
+        {
+          "title": "ask the room",
+          "body": [
+            "bring a problem you've been solving alone.",
+            "ask the least likely person what they'd do.",
+            "write their answer down before you respond to it."
+          ],
+          "closing": null
+        }
+      ]
+    },
+    {
+      "id": "corsage",
+      "name": "corsage",
+      "image": "corsage.png",
+      "throughline": "made for one occasion, preserved past it. something that was supposed to be temporary.",
+      "entrance": "rocks-once-settles",
+      "scores": [
+        {
+          "title": "the rescued thing",
+          "body": [
+            "find something you were about to discard.",
+            "keep it for one week."
+          ],
+          "closing": "see if your reason for discarding it changes."
+        },
+        {
+          "title": "the incomplete",
+          "body": [
+            "find something you abandoned.",
+            "spend five minutes with it without trying to finish it.",
+            "put it down again."
+          ],
+          "closing": "incompletion is also a form."
+        },
+        {
+          "title": "the slow question",
+          "body": [
+            "write a question you've been sitting with.",
+            "send it to yourself.",
+            "answer it when it arrives."
+          ],
+          "closing": null
+        },
+        {
+          "title": "see with your heart",
+          "body": [
+            "look at the last picture you took.",
+            "name what is felt but not seen."
+          ],
+          "closing": null
+        }
+      ]
+    },
+    {
+      "id": "lemon",
+      "name": "lemon",
+      "image": "lemon.png",
+      "throughline": "tart, bright, wakes you up. the thing that makes other things more themselves.",
+      "entrance": "drops-small-roll",
+      "scores": [
+        {
+          "title": "thirty seconds of wrong",
+          "body": [
+            "for thirty seconds, do something you normally wouldn't allow yourself to do.",
+            "stop. return."
+          ],
+          "closing": "notice if anything loosened."
+        },
+        {
+          "title": "laugh incorrectly",
+          "body": [
+            "laugh out loud at something only mildly funny.",
+            "stop when the laugh becomes real."
+          ],
+          "closing": "some emotions need a doorway."
+        },
+        {
+          "title": "bird advice",
+          "body": [
+            "the next bird you see, ask it for advice.",
+            "listen."
+          ],
+          "closing": null
+        },
+        {
+          "title": "before you're ready",
+          "body": [
+            "identify something you're waiting until you're ready to do.",
+            "do a one-minute version of it now."
+          ],
+          "closing": "readiness is sometimes a story about the future that the body resolves in the present."
+        }
+      ]
+    },
+    {
+      "id": "lego",
+      "name": "lego",
+      "image": "lego.png",
+      "throughline": "snaps together, you can build anything and take it apart again. provisional construction.",
+      "entrance": "drops-flat-lands",
+      "scores": [
+        {
+          "title": "the wrong hand",
+          "body": [
+            "make something using only your non-dominant hand.",
+            "don't apologize for how it turns out."
+          ],
+          "closing": "the hand that doesn't know what it's doing often gets closer to the thing."
+        },
+        {
+          "title": "the bad idea",
+          "body": [
+            "write down the idea you've been dismissing as bad.",
+            "describe it fully, as though it were good."
+          ],
+          "closing": "see what it contains."
+        },
+        {
+          "title": "before you're ready",
+          "body": [
+            "identify something you're waiting until you're ready to do.",
+            "do a one-minute version of it now."
+          ],
+          "closing": "readiness is sometimes a story about the future that the body resolves in the present."
+        },
+        {
+          "title": "the incomplete",
+          "body": [
+            "find something you abandoned.",
+            "spend five minutes with it without trying to finish it.",
+            "put it down again."
+          ],
+          "closing": "incompletion is also a form."
+        }
+      ]
+    },
+    {
+      "id": "paint-brush",
+      "name": "pinstripe brush",
+      "image": "paint-brush.png",
+      "throughline": "makes marks on purpose. not damage — color. the surface keeps what the brush leaves.",
+      "entrance": "drops-slides-slightly",
+      "scores": [
+        {
+          "title": "ask the room",
+          "body": [
+            "bring a problem you've been solving alone.",
+            "ask the least likely person what they'd do.",
+            "write their answer down before you respond to it."
+          ],
+          "closing": null
+        },
+        {
+          "title": "i might be wrong",
+          "body": [
+            "the next time you're certain you're right,",
+            "say i might be wrong about this before you continue."
+          ],
+          "closing": "notice if you continue differently."
+        },
+        {
+          "title": "say it out loud",
+          "body": [
+            "identify something you've been trying to figure out alone.",
+            "tell one person you haven't figured it out yet.",
+            "don't follow it with a plan."
+          ],
+          "closing": null
+        },
+        {
+          "title": "the slow walk",
+          "body": [
+            "walk somewhere you normally hurry through.",
+            "match your pace to the slowest person you can see."
+          ],
+          "closing": null
+        }
+      ]
+    },
+    {
+      "id": "pencil",
+      "name": "pencil stub",
+      "image": "pencil.png",
+      "throughline": "marks that can be undone. thinking out loud on paper.",
+      "entrance": "drops-rolls-slight",
+      "scores": [
+        {
+          "title": "the slower thought",
+          "body": [
+            "write something you've been thinking about by hand, slowly."
+          ],
+          "closing": "notice what changes when the thought has to slow down to become legible."
+        },
+        {
+          "title": "the gap",
+          "body": [
+            "write down something you understand but haven't yet become.",
+            "fold the paper.",
+            "put it somewhere you'll find it in a week."
+          ],
+          "closing": "understanding and being-otherwise move at different speeds."
+        },
+        {
+          "title": "the wrong answer",
+          "body": [
+            "write down the wrong answer to a problem you're stuck on.",
+            "describe it fully."
+          ],
+          "closing": "see what it knows that the right answer doesn't."
+        },
+        {
+          "title": "the other hand",
+          "body": [
+            "take a position you currently hold.",
+            "write the strongest argument against it.",
+            "don't rebut it.",
+            "put both in the same drawer."
+          ],
+          "closing": null
+        }
+      ]
+    },
+    {
+      "id": "homemade-rope-charm",
+      "name": "homemade rope charm",
+      "image": "homemade-rope-charm.png",
+      "throughline": "someone made this by hand. the making was the spell.",
+      "entrance": "drops-swings-once-settles",
+      "scores": [
+        {
+          "title": "before you're ready",
+          "body": [
+            "identify something you're waiting until you're ready to do.",
+            "do a one-minute version of it now."
+          ],
+          "closing": "readiness is sometimes a story about the future that the body resolves in the present."
+        },
+        {
+          "title": "the wrong hand",
+          "body": [
+            "make something using only your non-dominant hand.",
+            "don't apologize for how it turns out."
+          ],
+          "closing": "the hand that doesn't know what it's doing often gets closer to the thing."
+        },
+        {
+          "title": "carry it until",
+          "body": [
+            "pick up an object near you.",
+            "carry it until someone asks about it.",
+            "tell them the true reason you chose it — even if you have to invent it in the moment of telling."
+          ],
+          "closing": null
+        },
+        {
+          "title": "mark the threshold",
+          "body": [
+            "mark a threshold you cross regularly.",
+            "it doesn't mean anything yet.",
+            "cross it every time you leave."
+          ],
+          "closing": "see if it starts to."
+        }
+      ]
+    },
+    {
+      "id": "lucky-moon",
+      "name": "lucky moon",
+      "image": "lucky-moon.png",
+      "throughline": "luck is not a constant. it waxes. the moon knows this.",
+      "entrance": "drops-slight-bounce",
+      "scores": [
+        {
+          "title": "jar of small things",
+          "body": [
+            "place a container somewhere visible.",
+            "each time something small but unexpected happens, note it.",
+            "open it at the end of the month and read it back."
+          ],
+          "closing": null
+        },
+        {
+          "title": "heads or tails",
+          "body": [
+            "flip something for a question you've been circling.",
+            "live with what it says for twenty-four hours.",
+            "then decide again, if you want to."
+          ],
+          "closing": null
+        },
+        {
+          "title": "no plan",
+          "body": [
+            "choose one hour this week with nothing scheduled in it.",
+            "make no plan for it."
+          ],
+          "closing": "see what arrives."
+        },
+        {
+          "title": "coin guru",
+          "body": [
+            "for one week, offer to make decisions for others by flipping a coin for them."
+          ],
+          "closing": null
+        }
+      ]
+    },
+    {
+      "id": "rope-ball",
+      "name": "rope ball",
+      "image": "rope-ball.png",
+      "throughline": "the same material, wound and wound. not circles — accumulation. it becomes a different shape by repeating itself.",
+      "entrance": "drops-small-roll-settles",
+      "scores": [
+        {
+          "title": "carry it until",
+          "body": [
+            "pick up an object near you.",
+            "carry it until someone asks about it.",
+            "tell them the true reason you chose it — even if you have to invent it in the moment of telling."
+          ],
+          "closing": null
+        },
+        {
+          "title": "the slow question",
+          "body": [
+            "write a question you've been sitting with.",
+            "send it to yourself.",
+            "answer it when it arrives."
+          ],
+          "closing": null
+        },
+        {
+          "title": "half speed",
+          "body": [
+            "do the next thing you were going to do at half the speed."
+          ],
+          "closing": "notice what you would have skipped."
+        },
+        {
+          "title": "the gap",
+          "body": [
+            "write down something you understand but haven't yet become.",
+            "fold the paper.",
+            "put it somewhere you'll find it in a week."
+          ],
+          "closing": "understanding and being-otherwise move at different speeds."
+        }
+      ]
+    },
+    {
+      "id": "bottle-dogs-tooth",
+      "name": "bottle with dog's tooth",
+      "image": "bottle-dogs-tooth.png",
+      "throughline": "something precious kept in something small. a whole relationship compressed into an object.",
+      "entrance": "drops-rocks-once-settles",
+      "scores": [
+        {
+          "title": "borrowed object",
+          "body": [
+            "borrow something small from someone.",
+            "carry it for a day as though its history is partly yours.",
+            "return it before you explain what you were doing."
+          ],
+          "closing": null
+        },
+        {
+          "title": "three things",
+          "body": [
+            "find a living thing.",
+            "whisper three things you've almost stopped believing could still happen.",
+            "every time you tend to it, remember one."
+          ],
+          "closing": null
+        },
+        {
+          "title": "no record",
+          "body": [
+            "do something today that will leave no trace.",
+            "don't document it. don't tell anyone."
+          ],
+          "closing": "let it have happened anyway."
+        },
+        {
+          "title": "the slow question",
+          "body": [
+            "write a question you've been sitting with.",
+            "send it to yourself.",
+            "answer it when it arrives."
+          ],
+          "closing": null
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>scores & spells — a longlist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f2edd8;
+    --paper-dark: #e8e0c4;
+    --ink: #1c1610;
+    --ink-faded: #6b5d48;
+    --ink-very-faded: #a8977e;
+    --green: #2a3d2e;
+    --green-light: #4a6b50;
+    --rule: #c4b89a;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 17px;
+    line-height: 1.7;
+    min-height: 100vh;
+  }
+
+  /* grain overlay */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 100;
+    opacity: 0.6;
+  }
+
+  .page {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 80px 48px 120px;
+  }
+
+  /* header */
+  .grimoire-header {
+    text-align: center;
+    margin-bottom: 72px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid var(--rule);
+    position: relative;
+  }
+
+  .grimoire-header::after {
+    content: '✦';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--paper);
+    padding: 0 12px;
+    color: var(--ink-very-faded);
+    font-size: 14px;
+  }
+
+  .grimoire-title {
+    font-family: 'IM Fell English', serif;
+    font-size: 13px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-faded);
+    margin-bottom: 20px;
+  }
+
+  .grimoire-header h1 {
+    font-family: 'IM Fell English', serif;
+    font-size: 38px;
+    font-weight: normal;
+    line-height: 1.2;
+    color: var(--ink);
+    margin-bottom: 20px;
+  }
+
+  .grimoire-header p {
+    font-style: italic;
+    color: var(--ink-faded);
+    font-size: 16px;
+    max-width: 440px;
+    margin: 0 auto;
+  }
+
+  /* device sections */
+  .device-section {
+    margin-bottom: 64px;
+  }
+
+  .device-label {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+
+  .device-label::before,
+  .device-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--rule);
+  }
+
+  .device-label span {
+    font-family: 'EB Garamond', serif;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--green);
+    white-space: nowrap;
+    font-weight: 500;
+  }
+
+  /* individual score */
+  .score {
+    margin-bottom: 44px;
+    padding-bottom: 44px;
+    border-bottom: 1px solid var(--paper-dark);
+    animation: fadeIn 0.4s ease both;
+  }
+
+  .score:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .score-title {
+    font-family: 'IM Fell English', serif;
+    font-size: 22px;
+    font-weight: normal;
+    color: var(--ink);
+    margin-bottom: 12px;
+    line-height: 1.3;
+  }
+
+  .score-type {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-very-faded);
+    margin-bottom: 10px;
+  }
+
+  .score-body {
+    color: var(--ink);
+    font-size: 16.5px;
+    line-height: 1.85;
+  }
+
+  .score-body p {
+    margin-bottom: 2px;
+  }
+
+  .score-closing {
+    margin-top: 14px;
+    font-style: italic;
+    color: var(--ink-faded);
+    font-size: 15.5px;
+  }
+
+  /* footer */
+  .grimoire-footer {
+    text-align: center;
+    margin-top: 72px;
+    padding-top: 40px;
+    border-top: 1px solid var(--rule);
+    font-style: italic;
+    color: var(--ink-very-faded);
+    font-size: 15px;
+    position: relative;
+  }
+
+  .grimoire-footer::before {
+    content: '✦';
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--paper);
+    padding: 0 12px;
+    color: var(--ink-very-faded);
+    font-size: 14px;
+  }
+
+  /* stagger animation delays */
+  .score:nth-child(1) { animation-delay: 0.05s; }
+  .score:nth-child(2) { animation-delay: 0.1s; }
+  .score:nth-child(3) { animation-delay: 0.15s; }
+  .score:nth-child(4) { animation-delay: 0.2s; }
+  .score:nth-child(5) { animation-delay: 0.25s; }
+  .score:nth-child(6) { animation-delay: 0.3s; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header class="grimoire-header">
+    <p class="grimoire-title">the moult — scores & spells</p>
+    <h1>a longlist</h1>
+    <p>generated from the unstuck devices. take what fits. leave what doesn't. make it stranger.</p>
+  </header>
+
+  <!-- FLIP THE ADJECTIVE -->
+  <section class="device-section">
+    <div class="device-label"><span>from: flip the adjective</span></div>
+
+    <div class="score">
+      <div class="score-type">permission</div>
+      <h2 class="score-title">the long way round</h2>
+      <div class="score-body">
+        <p>take the route that wastes the most time.</p>
+        <p>don't account for it when you arrive.</p>
+      </div>
+    </div>
+
+    <div class="score">
+      <div class="score-type">permission</div>
+      <h2 class="score-title">the wrong answer</h2>
+      <div class="score-body">
+        <p>write down the wrong answer to a problem you're stuck on.</p>
+        <p>describe it fully.</p>
+        <p class="score-closing">see what it knows that the right answer doesn't.</p>
+      </div>
+    </div>
+
+    <div class="score">
+      <div class="score-type">permission</div>
+      <h2 class="score-title">laugh incorrectly</h2>
+      <div class="score-body">
+        <p>laugh out loud at something only mildly funny.</p>
+        <p>stop when the laugh becomes real.</p>
+        <p class="score-closing">some emotions need a doorway.</p>
+      </div>
+    </div>
+
+    <div class="score">
+      <div class="score-type">witness</div>
+      <h2 class="score-title">ask the room</h2>
+      <div class="score-body">
+        <p>bring a problem you've been solving alone.</p>
+        <p>ask the least likely person what they'd do.</p>
+        <p>write their answer down before you respond to it.</p>
+      </div>
+    </div>
+
+    <div class="score">
+      <div class="score-type">permission</div>
+      <h2 class="score-title">the incomplete</h2>
+      <div class="score-body">
+        <p>find something you abandoned.</p>
+        <p>spend five minutes with it without trying to finish it.</p>
+        <p>put it down again.</p>
+        <p class="score-closing">incompletion is also a form.</p>
+      </div>
+    </div>
+
+    <div class="score">
+      <div class="score-type">perception</div>
+      <h2 class="score-title">the other hand</h2>
+      <div class="score-body">
+        <p>take a position you currently hold.</p>
+        <p>write the strongest argument against it.</p>
+        <p>don't rebut it.</p>
+        <p>put both pieces of paper in the same drawer.</p>
+      </div>
+    </div>
+
+    <div class="score">
+      <div class="score-type">permission</div>
+      <h2 class="score-title">no plan</h2>
+      <div class="score-body">
+        <p>choose one hour this week with nothing scheduled in it.</p>
+        <p>make no plan for it.</p>
+        <p class="score-closing">see what arrives.</p>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- START FROM AN EQUATION -->
+  <section class="device-section">
+    <div class="device-label"><span>from: start from an equation</span></div>
+
+    <div class="score">
+      <div class="score-type">permission — productivity = worth</div>
+      <h2 class="score-title">ten minutes</h2>
+      <div class="score-body">
+        <p>set a timer for ten minutes.</p>
+        <p>do something with no output.</p>
+        <p>when the timer ends, resist the urge to account for it.</p>
+        <p class="score-closing">the ten minutes happened anyway.</p>
+      </div>
+    </div>
+
+    <div class="score">
+      <div class="score-type">witness — certainty = intelligence</div>
+      <h2 class="score-title">i might be wrong</h2>
+      <div class="score-body">
+        <p>the next time you're certain you're right,</p>
+        <p>say <em>i might be wrong about this</em> before you continue.</p>
+        <p class="score-closing">notice if you continue differently.</p>
+      </div>
+    </div>
+
+    <div class="score">
+      <div class="score-type">permission — expertise = authority</div>
+      <h2 class="score-title">the wrong expert</h2>
+      <div class="score-body">
+        <p>ask someone younger than you how they'd solve a problem you're stuck on.</p>
+        <p>try their suggestion once.</p>
+        <p class="score-closing">expertise travels in one direction until it doesn't.</p>
+      </div>
+    </div>
+
+    <div class="score">
+      <div class="score-type">witness — independence = strength</div>
+      <h2 class="score-title">say it out loud</h2>
+      <div class="score-body">
+        <p>identify something you've been trying to figure out alone.</p>
+        <p>tell one person you haven't figured it out yet.</p>
+        <p>don't follow it with a plan.</p>
+      </div>
+    </div>
+
+    <div class="score">
+      <div class="score-type">perception — speed = care</div>
+      <h2 class="score-title">half speed</h2>
+      <div class="score-body">
+        <p>do the next thing you were going to do at half the speed.</p>
+        <p class="score-closing">notice what you would have skipped.</p>
+      </div>
+    </div>
+
+    <div class="score">
+      <div class="score-type">perception — knowing = being</div>
+      <h2 class="score-title">the gap</h2>
+      <div class="score-body">
+        <p>write down something you understand but haven't yet become.</p>
+        <p>fold the paper.</p>
+        <p>put it somewhere you'll find it in a week.</p>
+        <p class="score-closing">understanding and being-otherwise move at different speeds.</p>
+      </div>
+    </div>
+
+    <div class="score">
+      <div class="score-type">permission — finishing = succeeding</div>
+      <h2 class="score-title">the unfinished</h2>
+      <div class="score-body">
+        <p>find something you left half-done.</p>
+        <p>sit with it for five minutes without touching it.</p>
+        <p>leave it half-done again.</p>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- GIVE IT A MATERIAL -->
+  <section class="device-section">
+    <div class="device-label"><span>from: give it a material</span></div>
+
+    <div class="score">
+      <div class="score-type">permission — coin</div>
+      <h2 class="score-title">heads or tails</h2>
+      <div class="score-body">
+        <p>flip a coin for a question you've been circling.</p>
+        <p>live with what it says for twenty-four hours.</p>
+        <p>then decide again, if you want to.</p>
+      </div>
+    </div>
+
+    <div class="score">
+      <div class="score-type">witness — envelope</div>
+      <h2 class="score-title">the slow question</h2>
+      <div class="score-body">
+        <p>write a question you've been sitting with.</p>
+        <p>address an envelope to yourself.</p>
+        <p>mail it.</p>
+        <p class="score-closing">answer it when it arrives.</p>
+      </div>
+    </div>
+
+    <div class="score">
+      <div class="score-type">perception — window</div>
+      <h2 class="score-title">the existing movement</h2>
+      <div class="score-body">
+        <p>look out a window.</p>
+        <p>find something that was already moving before you looked.</p>
+        <p>watch it until it does something you didn't expect.</p>
+        <p class="score-closing">the world rarely waits for our attention.</p>
+      </div>
+    </div>
+
+    <div class="score">
+      <div class="score-type">witness — plant</div>
+      <h2 class="score-title">three things</h2>
+      <div class="score-body">
+        <p>find a plant.</p>
+        <p>whisper three things you've almost stopped believing could still happen.</p>
+        <p>water it.</p>
+        <p class="score-closing">every time you water it, remember one.</p>
+      </div>
+    </div>
+
+    <div class="score">
+      <div class="score-type">witness — stranger</div>
+      <h2 class="score-title">borrow a certainty</h2>
+      <div class="score-body">
+        <p>ask someone you don't know well what they're sure of.</p>
+        <p>write it down without commentary.</p>
+        <p>carry it for the day.</p>
+        <p class="score-closing">certainty ages quickly.</p>
+      </div>
+    </div>
+
+    <div class="score">
+      <div class="score-type">permission — chalk</div>
+      <h2 class="score-title">mark the threshold</h2>
+      <div class="score-body">
+        <p>draw a small symbol on your doorstep in chalk.</p>
+        <p>it doesn't mean anything yet.</p>
+        <p>cross it every time you leave.</p>
+        <p class="score-closing">see if it starts to.</p>
+      </div>
+    </div>
+
+    <div class="score">
+      <div class="score-type">perception — jar</div>
+      <h2 class="score-title">jar of small things</h2>
+      <div class="score-body">
+        <p>place a jar somewhere visible.</p>
+        <p>each time something small but unexpected happens, whisper it to the jar.</p>
+        <p>open it at the end of the month and listen.</p>
+      </div>
+    </div>
+
+    <div class="score">
+      <div class="score-type">perception — handwriting</div>
+      <h2 class="score-title">the slower thought</h2>
+      <div class="score-body">
+        <p>write something you've been thinking about by hand, slowly.</p>
+        <p class="score-closing">notice what changes when the thought has to slow down to become legible.</p>
+      </div>
+    </div>
+
+    <div class="score">
+      <div class="score-type">witness — something borrowed</div>
+      <h2 class="score-title">borrowed object</h2>
+      <div class="score-body">
+        <p>borrow something small from someone.</p>
+        <p>carry it for a day as though its history is partly yours.</p>
+        <p>return it before you explain what you were doing.</p>
+      </div>
+    </div>
+
+    <div class="score">
+      <div class="score-type">permission — something about to be thrown away</div>
+      <h2 class="score-title">the rescued thing</h2>
+      <div class="score-body">
+        <p>find something you were about to discard.</p>
+        <p>keep it for one week.</p>
+        <p class="score-closing">see if your reason for discarding it changes.</p>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- GIVE IT A TIME -->
+  <section class="device-section">
+    <div class="device-label"><span>from: give it a time</span></div>
+
+    <div class="score">
+      <div class="score-type">permission — thirty seconds</div>
+      <h2 class="score-title">thirty seconds of wrong</h2>
+      <div class="score-body">
+        <p>for thirty seconds, do something you normally wouldn't allow yourself to do.</p>
+        <p>stop. return.</p>
+        <p class="score-closing">notice if anything loosened.</p>
+      </div>
+    </div>
+
+    <div class="score">
+      <div class="score-type">permission — one hour</div>
+      <h2 class="score-title">the temporary rule</h2>
+      <div class="score-body">
+        <p>invent a small rule for the next hour.</p>
+        <p>tell no one.</p>
+        <p>follow it completely.</p>
+        <p>let it expire.</p>
+      </div>
+    </div>
+
+    <div class="score">
+      <div class="score-type">perception — three days</div>
+      <h2 class="score-title">the drawer</h2>
+      <div class="score-body">
+        <p>write down the most obvious solution to a problem you have.</p>
+        <p>put it in a drawer.</p>
+        <p>don't look at it for three days.</p>
+        <p class="score-closing">see what arrived in the meantime.</p>
+      </div>
+    </div>
+
+    <div class="score">
+      <div class="score-type">witness — until something sprouts</div>
+      <h2 class="score-title">bean wish</h2>
+      <div class="score-body">
+        <p>place three dry beans in damp cotton.</p>
+        <p>whisper to them three things you've almost stopped believing could happen.</p>
+        <p>leave them on a windowsill.</p>
+        <p class="score-closing">watch what sprouts.</p>
+      </div>
+    </div>
+
+    <div class="score">
+      <div class="score-type">witness — until someone asks</div>
+      <h2 class="score-title">carry it until</h2>
+      <div class="score-body">
+        <p>pick up an object near you.</p>
+        <p>carry it until someone asks about it.</p>
+        <p>tell them the true reason you chose it — even if you have to invent it in the moment of telling.</p>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- STEAL THE STRUCTURE -->
+  <section class="device-section">
+    <div class="device-label"><span>from: steal the structure</span></div>
+
+    <div class="score">
+      <div class="score-type">perception</div>
+      <h2 class="score-title">peripheral vision</h2>
+      <div class="score-body">
+        <p>without moving your eyes, notice three things happening at the edges of your vision.</p>
+        <p class="score-closing">the center is not the only place where life occurs.</p>
+      </div>
+    </div>
+
+    <div class="score">
+      <div class="score-type">permission</div>
+      <h2 class="score-title">the wrong hand</h2>
+      <div class="score-body">
+        <p>make something using only your non-dominant hand.</p>
+        <p>don't apologize for how it turns out.</p>
+        <p class="score-closing">the hand that doesn't know what it's doing often gets closer to the thing.</p>
+      </div>
+    </div>
+
+    <div class="score">
+      <div class="score-type">witness</div>
+      <h2 class="score-title">postcard to the unknown</h2>
+      <div class="score-body">
+        <p>write a postcard addressed to whoever needs it most.</p>
+        <p>fill it with something you've almost stopped believing.</p>
+        <p>leave it somewhere a stranger might find it.</p>
+        <p class="score-closing">the world reads back, eventually.</p>
+      </div>
+    </div>
+
+    <div class="score">
+      <div class="score-type">perception</div>
+      <h2 class="score-title">ask the object</h2>
+      <div class="score-body">
+        <p>pick up an object near you.</p>
+        <p>ask it silently: <em>what do you want to be used for?</em></p>
+        <p>use it that way once today.</p>
+        <p class="score-closing">imagination sometimes restores function.</p>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- FIND THE PROHIBITION -->
+  <section class="device-section">
+    <div class="device-label"><span>from: find the prohibition</span></div>
+
+    <div class="score">
+      <div class="score-type">permission</div>
+      <h2 class="score-title">the slow walk</h2>
+      <div class="score-body">
+        <p>walk somewhere you normally hurry through.</p>
+        <p>match your pace to the slowest person you can see.</p>
+      </div>
+    </div>
+
+    <div class="score">
+      <div class="score-type">witness</div>
+      <h2 class="score-title">ask the question</h2>
+      <div class="score-body">
+        <p>ask the question you've been holding back in a meeting or conversation.</p>
+        <p>don't soften it first.</p>
+      </div>
+    </div>
+
+    <div class="score">
+      <div class="score-type">perception</div>
+      <h2 class="score-title">the bad idea</h2>
+      <div class="score-body">
+        <p>write down the idea you've been dismissing as bad.</p>
+        <p>describe it fully, as though it were good.</p>
+        <p class="score-closing">see what it contains.</p>
+      </div>
+    </div>
+
+    <div class="score">
+      <div class="score-type">permission</div>
+      <h2 class="score-title">stay in it</h2>
+      <div class="score-body">
+        <p>the next time you want to change the subject, don't.</p>
+        <p>stay in the thing for one more minute than feels comfortable.</p>
+      </div>
+    </div>
+
+    <div class="score">
+      <div class="score-type">witness</div>
+      <h2 class="score-title">no record</h2>
+      <div class="score-body">
+        <p>do something today that will leave no trace.</p>
+        <p>don't document it. don't tell anyone.</p>
+        <p class="score-closing">let it have happened anyway.</p>
+      </div>
+    </div>
+
+    <div class="score">
+      <div class="score-type">permission</div>
+      <h2 class="score-title">before you're ready</h2>
+      <div class="score-body">
+        <p>identify something you're waiting until you're ready to do.</p>
+        <p>do a one-minute version of it now.</p>
+        <p class="score-closing">readiness is sometimes a story about the future that the body resolves in the present.</p>
+      </div>
+    </div>
+
+  </section>
+
+  <footer class="grimoire-footer">
+    <p>the grimoire grows that way.</p>
+  </footer>
+
+</div>
+</body>
+</html>

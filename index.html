@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>the grimoire of tiny rebellions</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <span class="site-title">the grimoire of tiny rebellions</span>
+    <span class="orientation-line">for when you're stuck, wandering, or wondering where to from here.</span>
+  </header>
+
+  <main id="field" class="field">
+    <div class="field-vignette"></div>
+    <!-- charms are built by field.js -->
+    <p class="notice-text hidden">notice which one you saw first</p>
+  </main>
+
+  <!-- cast trigger -->
+  <button class="cast-trigger" id="cast-trigger">cast</button>
+
+  <!-- through-line (appears after charm selected) -->
+  <p id="through-line" class="through-line"></p>
+
+  <!-- score cluster (appears after charm selected) -->
+  <div id="score-panel" class="score-panel hidden">
+    <div id="scores-cluster" class="scores-cluster"></div>
+  </div>
+
+  <!-- drag hint -->
+  <div id="drag-hint" class="drag-hint hidden">drag to move &middot; tap to take</div>
+
+  <!-- note prompt (appears after score taken) -->
+  <div id="note-prompt" class="note-prompt hidden">
+    <div class="note-drag-handle"></div>
+    <p class="note-took" id="note-took"></p>
+    <p class="note-prompt-text" id="note-prompt-text"></p>
+    <div class="note-card">
+      <textarea id="note-input" placeholder="write here" rows="5"></textarea>
+      <div class="note-actions">
+        <button class="note-submit" id="note-submit">leave this here</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- recast -->
+  <button class="recast-btn" id="recast-btn">cast again</button>
+
+  <!-- nav — hidden until first contribution -->
+  <nav id="site-nav" class="site-nav hidden">
+    <a href="guestbook.html">what others took</a>
+    <a href="origins.html">lineage</a>
+    <a href="grimoire-index.html">the index</a>
+  </nav>
+
+  <script src="js/config.js"></script>
+  <script src="js/field.js"></script>
+</body>
+</html>
