@@ -155,8 +155,8 @@ body {
   left: 50%;
   transform: translateX(-50%);
   font-family: 'Cedarville Cursive', cursive;
-  font-size: 14px;
-  color: rgba(255,255,255,0.68);
+  font-size: 16px;
+  color: rgba(255,255,255,0.84);
   letter-spacing: 0.02em;
   white-space: nowrap;
   pointer-events: none;
@@ -254,8 +254,8 @@ body {
 
 .score-take-hint {
   font-family: 'Cedarville Cursive', cursive;
-  font-size: 12px;
-  color: var(--ink-ghost);
+  font-size: 14px;
+  color: var(--ink-faint);
   margin-top: 10px;
   display: block;
 }
@@ -267,8 +267,8 @@ body {
   top: 26px;
   right: 28px;
   font-family: 'Cedarville Cursive', cursive;
-  font-size: 13px;
-  color: rgba(255,255,255,0.75);
+  font-size: 15px;
+  color: rgba(255,255,255,0.90);
   pointer-events: none;
   white-space: nowrap;
   text-shadow: 0 1px 3px rgba(18,38,62,0.28);
@@ -351,8 +351,8 @@ body {
 
 .note-prompt-text {
   font-family: 'Cedarville Cursive', cursive;
-  font-size: 13px;
-  color: rgba(255,255,255,0.58);
+  font-size: 15px;
+  color: rgba(255,255,255,0.78);
   text-align: center;
   margin-bottom: 14px;
   text-shadow: 0 1px 3px rgba(18,38,62,0.22);
@@ -445,14 +445,14 @@ textarea#note-input::placeholder { color: var(--ink-ghost); }
 
 .site-nav a {
   font-family: 'Cedarville Cursive', cursive;
-  font-size: 13px;
-  color: rgba(255,255,255,0.62);
+  font-size: 15px;
+  color: rgba(255,255,255,0.80);
   text-decoration: none;
   letter-spacing: 0.01em;
   transition: color 200ms;
   text-shadow: 0 1px 3px rgba(18,38,62,0.22);
 }
-.site-nav a:hover { color: rgba(255,255,255,0.9); }
+.site-nav a:hover { color: rgba(255,255,255,1); }
 
 /* ── recast button ── */
 
@@ -502,21 +502,21 @@ textarea#note-input::placeholder { color: var(--ink-ghost); }
 
 .inner-page .sub {
   font-family: 'Cedarville Cursive', cursive;
-  font-size: 14px;
-  color: rgba(255,255,255,0.58);
+  font-size: 15px;
+  color: rgba(255,255,255,0.74);
   margin-bottom: 48px;
 }
 
 .inner-back {
   display: inline-block;
   font-family: 'Cedarville Cursive', cursive;
-  font-size: 13px;
-  color: rgba(255,255,255,0.58);
+  font-size: 15px;
+  color: rgba(255,255,255,0.76);
   text-decoration: none;
   margin-bottom: 40px;
   letter-spacing: 0.01em;
 }
-.inner-back:hover { color: rgba(255,255,255,0.88); }
+.inner-back:hover { color: rgba(255,255,255,0.96); }
 
 /* guestbook entries — each entry is a paper card with slight scatter */
 
@@ -563,8 +563,8 @@ textarea#note-input::placeholder { color: var(--ink-ghost); }
 
 .entry-charm {
   font-family: 'Cedarville Cursive', cursive;
-  font-size: 11px;
-  color: var(--ink-ghost);
+  font-size: 13px;
+  color: var(--ink-faint);
   margin-left: 6px;
 }
 
@@ -578,8 +578,8 @@ textarea#note-input::placeholder { color: var(--ink-ghost); }
 
 .entry-time {
   font-family: 'Cedarville Cursive', cursive;
-  font-size: 11px;
-  color: var(--ink-ghost);
+  font-size: 13px;
+  color: var(--ink-faint);
 }
 
 .guestbook-gate {
@@ -598,8 +598,8 @@ textarea#note-input::placeholder { color: var(--ink-ghost); }
 
 .guestbook-gate a {
   font-family: 'Cedarville Cursive', cursive;
-  font-size: 13px;
-  color: rgba(255,255,255,0.58);
+  font-size: 15px;
+  color: rgba(255,255,255,0.76);
   text-decoration: underline;
   text-underline-offset: 3px;
 }
@@ -686,8 +686,8 @@ textarea#note-input::placeholder { color: var(--ink-ghost); }
 
 .loading-text, .error-text {
   font-family: 'Cedarville Cursive', cursive;
-  font-size: 14px;
-  color: rgba(255,255,255,0.48);
+  font-size: 15px;
+  color: rgba(255,255,255,0.68);
   text-align: center;
   padding: 40px;
 }
@@ -696,16 +696,16 @@ textarea#note-input::placeholder { color: var(--ink-ghost); }
 
 .grimoire-index-intro {
   font-family: 'Cedarville Cursive', cursive;
-  font-size: 14px;
-  color: rgba(255,255,255,0.52);
+  font-size: 15px;
+  color: rgba(255,255,255,0.72);
   margin: -12px 0 48px;
   letter-spacing: 0.01em;
 }
 
 .grimoire-index-loading {
   font-family: 'Cedarville Cursive', cursive;
-  font-size: 14px;
-  color: rgba(255,255,255,0.44);
+  font-size: 15px;
+  color: rgba(255,255,255,0.64);
   text-align: center;
   padding: 40px 0;
 }
@@ -805,8 +805,8 @@ textarea#note-input::placeholder { color: var(--ink-ghost); }
 
 .orientation-line {
   font-family: 'Cedarville Cursive', cursive;
-  font-size: 11px;
-  color: rgba(255,255,255,0.52);
+  font-size: 13px;
+  color: rgba(255,255,255,0.72);
   letter-spacing: 0.01em;
   text-shadow: 0 1px 3px rgba(18,38,62,0.25);
 }
@@ -853,7 +853,7 @@ textarea#note-input::placeholder { color: var(--ink-ghost); }
   .through-line { top: 52px; max-width: 88vw; line-height: 1.4; }
 
   /* notice — top of field, below the title, away from charms */
-  .notice-text { font-size: 13px; top: 44px; bottom: auto; }
+  .notice-text { font-size: 15px; top: 44px; bottom: auto; }
 
   /* drag hint — not useful on touch */
   .drag-hint { display: none !important; }
@@ -908,7 +908,7 @@ textarea#note-input::placeholder { color: var(--ink-ghost); }
     padding: 8px 14px;
     border-radius: 20px;
   }
-  .site-nav a { font-size: 12px; color: rgba(255,255,255,0.82); }
+  .site-nav a { font-size: 14px; color: rgba(255,255,255,0.90); }
 
   /* inner pages */
   .inner-page { padding: 48px 20px 80px; }

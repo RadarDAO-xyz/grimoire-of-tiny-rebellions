@@ -196,8 +196,14 @@ function makeDraggable(el, onTap) {
     el.setPointerCapture(e.pointerId);
 
     const rect  = el.getBoundingClientRect();
-    startLeft   = rect.left;
-    startTop    = rect.top;
+    // Use center-based placement so a rotated card doesn't jump on first grab.
+    // getBoundingClientRect gives the axis-aligned bounding box; its center equals
+    // the element's true center regardless of rotation. We back-calculate the
+    // pre-rotation top-left from that center and the element's natural dimensions.
+    const centerX = rect.left + rect.width  / 2;
+    const centerY = rect.top  + rect.height / 2;
+    startLeft = centerX - el.offsetWidth  / 2;
+    startTop  = centerY - el.offsetHeight / 2;
     // Move to body so the card escapes #score-panel's stacking context (z-index 10)
     // and its own z-index 100 competes at the root level, above the note prompt (z-index 20).
     if (el.parentNode !== document.body) document.body.appendChild(el);
@@ -638,7 +644,7 @@ function showNotePrompt(score) {
   const promptText = document.getElementById('note-prompt-text');
 
   took.textContent       = `you took "${score.title}" with you.`;
-  promptText.textContent = 'what happened, or what do you think will?';
+  promptText.textContent = 'leave something here to cast again — what happened, or what do you think will?';
   prompt.classList.remove('hidden');
 
   if (window.innerWidth > 600) {
