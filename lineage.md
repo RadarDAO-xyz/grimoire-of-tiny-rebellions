@@ -65,7 +65,7 @@ small acts create small openings. and through those openings, different ways of 
 
 the grimoire of tiny rebellions is what came out the other side.
 
-a small, strange site. you land on a field of scattered objects — a marble, a key, a wishbone, a match. something catches you. you click it. you receive a small cluster of scores. you take one with you. before you go, you leave a note.
+a small, strange site. you land on a field of scattered objects — a marble, a key, a button, a match. something catches you. you click it. you receive a small cluster of scores. you take one with you. before you go, you leave a note.
 
 you've crossed a threshold. it doesn't mean anything yet.
 
