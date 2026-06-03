@@ -70,7 +70,3 @@ a small, strange site. you land on a field of scattered objects — a marble, a 
 you've crossed a threshold. it doesn't mean anything yet.
 
 see if it starts to.
-
----
-
-*the grimoire of tiny rebellions grew out of the moult — RADAR's 2026 exploration into unlearning. it draws from fluxus event scores, the grimoire tradition, appalachian and west african charm casting practices, and from a few years of RADAR learning — in public, together — that you can't think your way to new ways of acting. it is, as all good grimoires are, resplendently citational.*
