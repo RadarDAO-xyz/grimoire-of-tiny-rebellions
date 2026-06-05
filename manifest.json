@@ -1,0 +1,28 @@
+{
+  "name": "the grimoire of tiny rebellions",
+  "short_name": "grimoire",
+  "description": "for when you're stuck, wandering, or wondering where to from here.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#7aaac8",
+  "theme_color": "#5a8ab5",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/assets/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

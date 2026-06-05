@@ -4,6 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>the grimoire of tiny rebellions</title>
+  <meta name="theme-color" content="#5a8ab5">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="grimoire">
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -56,7 +62,17 @@
     <a href="grimoire-index.html">the index</a>
   </nav>
 
+  <!-- radar badge -->
+  <a href="https://linktr.ee/radar_xyz" class="radar-badge" target="_blank" rel="noopener noreferrer">
+    <img src="assets/radar-logo.png" alt="RADAR">
+  </a>
+
   <script src="js/config.js"></script>
   <script src="js/field.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/sw.js');
+    }
+  </script>
 </body>
 </html>
