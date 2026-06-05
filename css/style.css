@@ -859,8 +859,8 @@ textarea#note-input::placeholder { color: var(--ink-ghost); }
 .radar-badge:hover { opacity: 1; }
 .radar-badge img {
   display: block;
-  width: 58px;
-  height: 58px;
+  width: 80px;
+  height: 80px;
   object-fit: contain;
   filter: drop-shadow(0 1px 5px rgba(18,38,62,0.40));
 }
@@ -971,7 +971,7 @@ textarea#note-input::placeholder { color: var(--ink-ghost); }
 
   /* radar badge */
   .radar-badge { bottom: 16px; left: 16px; }
-  .radar-badge img { width: 36px; height: 36px; }
+  .radar-badge img { width: 56px; height: 56px; }
 
   /* mobile score card text — slightly roomier */
   .score-take-hint { font-size: 15px; }
