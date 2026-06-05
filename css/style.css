@@ -283,7 +283,7 @@ body {
 /* through-line */
 .through-line {
   position: fixed;
-  top: 7vh;
+  top: max(7vh, 72px);
   left: 50%;
   transform: translateX(-50%);
   font-family: 'Fraunces', serif;
@@ -859,8 +859,8 @@ textarea#note-input::placeholder { color: var(--ink-ghost); }
 .radar-badge:hover { opacity: 1; }
 .radar-badge img {
   display: block;
-  width: 44px;
-  height: 44px;
+  width: 58px;
+  height: 58px;
   object-fit: contain;
   filter: drop-shadow(0 1px 5px rgba(18,38,62,0.40));
 }
